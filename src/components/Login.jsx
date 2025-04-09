@@ -1,23 +1,29 @@
 import { useState } from "react";
-import { Input } from "./Input";
-import { emailValidationMessage, validateEmail, validatePassword } from "../shared/hooks";
-import { useLogin } from "../shared/hooks";
+import { Logo } from './Logo';
+import { Input } from './Input';
+import {
+   
+    validateEmail,
+    validatePassword,
+    passwordValidationMessage,
+    emailValidationMessage
+} from '../shared/validators';
+import { useLogin } from '../shared/hooks'
 
 export const Login = ({ switchAuthHandler }) => {
     const { login, isLoading } = useLogin();
 
     const [formState, setFormState] = useState({
         email: {
-            value: "",
+            value: '',
             isValid: false,
-            showError: false,
-            errorMessage: "",
+            showError: false
         },
         password: {
-            value: "",
+            value: '',
             isValid: false,
-            showError: false,
-        },
+            showError: false
+        }
     });
 
     const handleInputValueChange = (value, field) => {
@@ -25,75 +31,71 @@ export const Login = ({ switchAuthHandler }) => {
             ...prevState,
             [field]: {
                 ...prevState[field],
-                value,
-            },
+                value
+            }
         }));
-    };
+    }
 
     const handleInputValidationOnBlur = (value, field) => {
         let isValid = false;
-        let errorMessage = "";
-
         switch (field) {
-            case "email":
+            case 'email':
                 isValid = validateEmail(value);
-                errorMessage = isValid ? "" : emailValidationMessage;
                 break;
-            case "password":
+            case 'password':
                 isValid = validatePassword(value);
                 break;
             default:
                 break;
         }
-
         setFormState((prevState) => ({
             ...prevState,
             [field]: {
                 ...prevState[field],
                 isValid,
-                showError: !isValid,
-                errorMessage, // Agregar el mensaje de error al estado
-            },
+                showError: !isValid
+            }
         }));
-    };
+    }
 
     const handleLogin = (event) => {
         event.preventDefault();
         login(formState.email.value, formState.password.value);
-    };
+    }
 
-    const isSubmitButtonDisabled = isLoading || !formState.email.isValid || !formState.password.isValid;
+    const isSubmitButtonDisable = isLoading || !formState.email.isValid || !formState.password.isValid;
 
     return (
         <div className="login-container">
-            <Logo text="Login Kinal Cast" />
-            <form className="auth-form" onSubmit={handleLogin}>
+            <Logo text={'Login Kinal Cast'} />
+            <form className="auth-form">
                 <Input
-                    field="email"
-                    label="Email"
+                    field='email'
+                    label='Email'
                     value={formState.email.value}
                     onChangeHandler={handleInputValueChange}
-                    type="text"
+                    type='text'
                     onBlurHandler={handleInputValidationOnBlur}
                     showErrorMessage={formState.email.showError}
-                    errorMessage={formState.email.errorMessage} // Mostrar mensaje de error
+                    validationMessage={emailValidationMessage}
                 />
                 <Input
-                    field="password"
-                    label="Password"
+                    field='password'
+                    label='Password'
                     value={formState.password.value}
                     onChangeHandler={handleInputValueChange}
-                    type="password"
+                    type='password'
                     onBlurHandler={handleInputValidationOnBlur}
                     showErrorMessage={formState.password.showError}
+                    validationMessage={passwordValidationMessage}
                 />
-                <button type="submit" disabled={isSubmitButtonDisabled}>
-                    {isLoading ? "Loading..." : "Log in"}
+                <button onClick={handleLogin} disabled={isSubmitButtonDisable}>
+                    Log in
                 </button>
             </form>
             <span onClick={switchAuthHandler} className="auth-form-switch-label">
                 Don't have an account? Sign up
             </span>
         </div>
-    );
-};
+    )
+}

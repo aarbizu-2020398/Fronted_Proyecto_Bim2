@@ -2,42 +2,43 @@ export const Input = ({
     field,
     label,
     value,
-    oneChangeHandler,
+    onChangeHandler,
     type,
     showErrorMessage,
     validationMessage,
     onBlurHandler,
     textArea
-}) => {
+}) =>{
+   
     const handleValueChange = (event) => {
-        oneChangeHandler(event.target.value, field);
+        onChangeHandler(event.target.value, field);
     }
-
-    const handleBlur = (event) => {
+ 
+    const handleInputBlur = (event) => {
         onBlurHandler(event.target.value, field);
     }
+ 
     return (
         <>
-            <div className="auth-from-label">
+            <div className="auth-form-label">
                 <span>{label}</span>
             </div>
-
             <div>
                 {textArea ? (
                     <textarea
                         type={type}
                         value={value}
                         onChange={handleValueChange}
-                        onBlur={handleBlur}
+                        onBlur={handleInputBlur}
                         rows={5}
-                        style={{ maxWidth: '400px' }}
+                        style={{ maxWidth: '400px'}}
                     />
                 ) : (
                     <input
                         type={type}
                         value={value}
                         onChange={handleValueChange}
-                        onBlur={handleBlur}
+                        onBlur={handleInputBlur}
                     />
                 )}
                 <span className="auth-form-validation-message">
@@ -45,5 +46,5 @@ export const Input = ({
                 </span>
             </div>
         </>
-    );
+    )
 }

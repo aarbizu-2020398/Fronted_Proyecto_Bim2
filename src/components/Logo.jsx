@@ -1,4 +1,4 @@
-import logo from '../assets/Star.png';
+import logo from '../assets/img/Star.png';
 
 export const Logo = ({ text }) => {
     return (
@@ -8,3 +8,4 @@ export const Logo = ({ text }) => {
         </div>
     );
 };
+

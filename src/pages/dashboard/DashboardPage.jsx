@@ -1,9 +1,11 @@
-import React from 'react'
+import { Navbar } from "../../components/navbars/Navbar"
+
+import './dashboardPage.css'
 
 export const DashboardPage = () => {
   return (
     <div>
-      DashboardPage
+      <Navbar />
     </div>
   )
 }
