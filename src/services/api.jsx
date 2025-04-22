@@ -1,6 +1,6 @@
 import axios from "axios";
 import { logout } from "../shared/hooks";
-import { data } from "react-router-dom";
+
 
 const apiClient = axios.create({
     baseURL: 'http://127.0.0.1:8080/twitch/v1',
@@ -33,7 +33,6 @@ export const login = async (data) => {
         }
     }
 }
-
 
 export const register = async (data) => {
     try {
@@ -68,6 +67,18 @@ export const getChannelsSettingsm = async () => {
     }
 }
 
+export const getFollowedChannels = async () => {
+    try {
+        return await apiClient.get('/channels/followed')
+    } catch (error) {
+        checkResponseStatus(error)
+        return {
+            error: true,
+            e: error
+        }
+    }
+}
+
 export const changePassword = async (data) => {
     try {
         return await apiClient.patch('/settings/password', data)
@@ -86,19 +97,6 @@ export const updateChannelSettings = async (data) => {
         return {
             error: true,
             e
-        }
-    }
-}
-
-
-export const getFollowedChannels = async () => {
-    try {
-        return await apiClient.get('/channels/followed')
-    } catch (error) {
-        checkResponseStatus(error)
-        return {
-            error: true,
-            e: error
         }
     }
 }
