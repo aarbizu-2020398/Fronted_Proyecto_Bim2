@@ -1,5 +1,9 @@
 import { followChannel, getChannels } from "../../services";
+<<<<<<< HEAD
 import { useFollowChannel, useUserDetails } from "../../shared/hooks";
+=======
+import { useFollowChannel, useUserDetails } from "../../shared/hooks/useFollowChannel";
+>>>>>>> 710bc78b8353c52816afd73803aa55a587e4a6a3
 
 const FollowButton = ({channelId, getChannels}) =>{
 

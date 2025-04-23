@@ -48,7 +48,10 @@ export const PasswordSettings = () => {
     }
 
     const handleInputValidationOnBlur = (value, field) => {
+<<<<<<< HEAD
 
+=======
+>>>>>>> 710bc78b8353c52816afd73803aa55a587e4a6a3
         let isValid = validatePassword(value)
 
         setFormState((prevState) => ({
