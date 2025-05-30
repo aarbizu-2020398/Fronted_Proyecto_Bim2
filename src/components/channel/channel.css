@@ -1,0 +1,37 @@
+.channel-card {
+    display: flex;
+    align-items: center;
+    background: #222;
+    border-radius: 12px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    color: white;
+    transition: transform 0.2s ease;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+  }
+  
+  .channel-card:hover {
+    transform: scale(1.02);
+  }
+  
+  .channel-avatar-container {
+    margin-right: 1rem;
+  }
+  
+  .channel-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .channel-info h3 {
+    margin: 0;
+    font-size: 1.2rem;
+  }
+  
+  .channel-info p {
+    margin: 0.2rem 0;
+  }
+  

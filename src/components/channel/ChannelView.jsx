@@ -4,11 +4,11 @@ import { ReactFlvPlayer } from "react-flv-player";
 import { ChannelDescription } from "./ChannelDescription"
 import { useChannelDetails } from "../../shared/hooks";
 import { LoadingSpinner } from "../LoadingSpinner"
- 
+
 export const Stream = ({streamUrl}) => {
     return(
         <div className="channel-video-container">
-            <ReactFlvPlayer
+            <ReactFlvPlayer 
                 url={streamUrl}
                 width="100%"
                 height="100%"
@@ -16,21 +16,21 @@ export const Stream = ({streamUrl}) => {
         </div>
     )
 }
- 
+
 export const ChannelView = ({getChannels}) => {
- 
+
     const { isFetching, getChannelDetails, channelDetails } = useChannelDetails();
- 
+
     const {id} = useParams();
- 
+
     useEffect(() => {
         getChannelDetails(id)
     },[])
- 
+
     if (isFetching) {
             return <LoadingSpinner/>
     }
- 
+
     return(
         <div className="channel-conteiner">
             <div className="channel-video-description-section">
@@ -41,7 +41,7 @@ export const ChannelView = ({getChannels}) => {
                         <span>Channel is Offline</span>    
                     </div>
                 )}
- 
+
                 <ChannelDescription
                     channelId ={channelDetails.data.id}
                     title ={channelDetails.data.title}
@@ -53,4 +53,3 @@ export const ChannelView = ({getChannels}) => {
         </div>
     )
 }
- 

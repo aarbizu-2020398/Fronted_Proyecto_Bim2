@@ -1,6 +1,6 @@
 import { useState } from "react";
 import {
-    passwordValidationMessage,
+    validatePasswordMessage,
     validatePassword
 } from "../../shared/validators"
 import { useChangePassword } from "../../shared/hooks";
@@ -10,13 +10,13 @@ const inputs = [
     {
         field: 'password',
         label: 'Password',
-        validationMessage: passwordValidationMessage,
+        validationMessage: validatePasswordMessage,
         type: 'password'
     },
     {
         field: 'newPassword',
         label: 'New Password',
-        validationMessage: passwordValidationMessage,
+        validationMessage: validatePasswordMessage,
         type: 'password'
     }
 ]
@@ -48,10 +48,7 @@ export const PasswordSettings = () => {
     }
 
     const handleInputValidationOnBlur = (value, field) => {
-<<<<<<< HEAD
 
-=======
->>>>>>> 710bc78b8353c52816afd73803aa55a587e4a6a3
         let isValid = validatePassword(value)
 
         setFormState((prevState) => ({

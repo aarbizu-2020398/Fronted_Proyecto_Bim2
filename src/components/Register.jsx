@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from 'react';
 import { Logo } from './Logo';
 import { Input } from './Input';
 import {
@@ -8,15 +8,15 @@ import {
     validateConfirPassword,
     validateUsernameMessage,
     emailValidationMessage,
-    passwordConfirmationMessage,
-    passwordValidationMessage
-} from '../shared/validators';
+    validatePasswordMessage,
+    passwordConfirmationMessage
+} from '../shared/validators'
+import { useRegister } from '../shared/hooks'
 
-import { useRegister } from '../shared/hooks';
 export const Register = ({ switchAuthHandler }) => {
- 
+
     const { register, isLoading } = useRegister()
- 
+
     const [formState, setFormState] = useState({
         email: {
             value: '',
@@ -39,7 +39,7 @@ export const Register = ({ switchAuthHandler }) => {
             showError: false,
         }
     })
- 
+
     const handleInputValueChange = (value, field) => {
         setFormState((prevState) => ({
             ...prevState,
@@ -49,7 +49,7 @@ export const Register = ({ switchAuthHandler }) => {
             }
         }));
     }
- 
+
     const handleInputValidationOnBlur = (value, field) => {
         let isValid = false;
         switch (field) {
@@ -77,18 +77,18 @@ export const Register = ({ switchAuthHandler }) => {
             }
         }));
     }
- 
+
     const handleRegister = (event) => {
         event.preventDefault()
         register(formState.email.value, formState.password.value, formState.username.value)
     }
- 
+
     const isSubmitButtonDisable = isLoading ||
         !formState.email.isValid ||
         !formState.password.isValid ||
         !formState.username.isValid ||
         !formState.passwordConfir.isValid;
- 
+
     return (
         <div className="register-container">
             <Logo text={'Register Kinal Cast'} />
@@ -121,7 +121,7 @@ export const Register = ({ switchAuthHandler }) => {
                     type='password'
                     onBlurHandler={handleInputValidationOnBlur}
                     showErrorMessage={formState.password.showError}
-                    validationMessage={passwordValidationMessage}
+                    validationMessage={validatePasswordMessage}
                 />
                 <Input
                     field='passwordConfir'
@@ -143,4 +143,3 @@ export const Register = ({ switchAuthHandler }) => {
         </div>
     )
 }
- 

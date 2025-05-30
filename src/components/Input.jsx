@@ -1,3 +1,4 @@
+
 export const Input = ({
     field,
     label,
@@ -9,15 +10,15 @@ export const Input = ({
     onBlurHandler,
     textArea
 }) =>{
-   
+    
     const handleValueChange = (event) => {
         onChangeHandler(event.target.value, field);
     }
- 
+
     const handleInputBlur = (event) => {
         onBlurHandler(event.target.value, field);
     }
- 
+
     return (
         <>
             <div className="auth-form-label">

@@ -2,11 +2,10 @@ import { useState } from "react";
 import { Logo } from './Logo';
 import { Input } from './Input';
 import {
-   
+    emailValidationMessage,
     validateEmail,
-    validatePassword,
-    passwordValidationMessage,
-    emailValidationMessage
+    validatePasswordMessage,
+    validatePassword
 } from '../shared/validators';
 import { useLogin } from '../shared/hooks'
 
@@ -87,7 +86,7 @@ export const Login = ({ switchAuthHandler }) => {
                     type='password'
                     onBlurHandler={handleInputValidationOnBlur}
                     showErrorMessage={formState.password.showError}
-                    validationMessage={passwordValidationMessage}
+                    validationMessage={validatePasswordMessage}
                 />
                 <button onClick={handleLogin} disabled={isSubmitButtonDisable}>
                     Log in

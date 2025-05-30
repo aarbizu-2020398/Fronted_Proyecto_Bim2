@@ -16,8 +16,8 @@ export const useUserDetails = () => {
         logoutHandler()
     }
 
-    return{
-        isLogged : Boolean(userDetails),
+    return {
+        isLogged: Boolean(userDetails),
         username: userDetails?.username ? userDetails.username : 'Guest',
         logout
     }

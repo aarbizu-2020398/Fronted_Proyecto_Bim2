@@ -1,8 +1,9 @@
 export { useLogin } from './useLogin';
 export { useRegister } from './useRegister'
-export { logout } from './userLogout'
-export { useUserDetails } from './useUserDetails'
+export {logout} from './userLogout'
+export {useUserDetails} from './useUserDetails'
+export { useChannels } from './useChannels'
 export { useChannelSettings } from './useChangeSettings'
 export { useChangePassword } from './useChangePassword'
-export {useFollowChannel} from './useFollowChannel'
-export {useChannelDetails} from './useChannelDetails'
+export { useChannelDetails } from './useChannelDetails'
+export { useFollowChannel } from './useFollowChannel'
